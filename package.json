@@ -18,7 +18,7 @@
   "author": "samuel bamgboye",
   "license": "MIT",
   "dependencies": {
-    "backender": "0.0.2",
+    "backender": "0.0.5",
     "backender-testbuilder": "0.0.8",
     "dalekjs": "0.0.9",
 	 "dalek-browser-chrome": "0.0.11",
