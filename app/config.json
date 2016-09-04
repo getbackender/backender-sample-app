@@ -1,0 +1,43 @@
+{
+      "apiverbose": true,
+      "localport": 8880,
+      "apiport": 9990,
+      "datasourcepath": "/app",
+      "datasource": [
+        "db.json",
+        "db.js",
+        {
+          "products3": [
+            {
+              "hey": "whatpp"
+            }
+          ]
+        }
+      ],
+      "routes": [
+        {
+          "route": "/api/all/GetProducts1",
+          "data": "products1"
+        },
+        {
+          "route": "/api/GetProducts2",
+          "data": "products2"
+        },
+        {
+          "route": "/api/GetProducts3",
+          "data": "products3"
+        },
+        {
+          "route": "/bootstrap",
+          "endpoint": "http://getbootstrap.com/"
+        },
+        {
+          "route": "/",
+          "path": "app/web"
+        },
+        {
+          "route": "/my/pb",
+          "data": "pb"
+        }
+      ]
+    }

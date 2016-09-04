@@ -1,0 +1,18 @@
+{
+	"products1" : [{
+			"hey" : "what1"
+		}, {
+			"hey" : "what2"
+		}, {
+			"hey" : "what3"
+		}, {
+			"hey" : "what4"
+		}
+	],
+	"products2" : [{
+			"hey" : "what1"
+		}, {
+			"hey" : "what2"
+		}
+	]
+}

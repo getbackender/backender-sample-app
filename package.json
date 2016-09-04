@@ -1,0 +1,30 @@
+{
+  "name": "sample-backender-app",
+  "version": "1.0.0",
+  "description": "Sample app using backender",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "backender",
+    "testing",
+    "automation",
+    "tdd"
+  ],
+  "author": "samuel bamgboye",
+  "license": "MIT",
+  "dependencies": {
+    "backender": "0.0.2",
+    "backender-testbuilder": "0.0.8",
+    "dalekjs": "0.0.9",
+	 "dalek-browser-chrome": "0.0.11",
+    "dalek-cli": "0.0.5",
+    "dalek-reporter-html": "0.0.4",
+    "gulp": "^3.9.1",
+    "gulp-backender": "0.0.4"
+  }
+}

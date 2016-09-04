@@ -1,0 +1,31 @@
+{
+	"config" : [
+     {
+			"apiverbose" : true,
+			"localport" : 8890,
+			"apiport" : 8891,
+			"datasource" : [
+        {
+					"products3" : [{
+							"hey" : "whatpp"
+						}
+					]
+				}
+			],
+      "routes": [
+        {
+          "route": "/api/GetProducts3",
+          "data": "products3"
+        },
+        {
+          "route": "/bootstrap",
+          "endpoint": "http://getbootstrap.com/"
+        },
+        {
+          "route": "/",
+          "path": "app/web"
+        }
+      ]
+		}
+	]
+}
