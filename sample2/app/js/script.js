@@ -1,4 +1,4 @@
-﻿var app = angular.module("InventoryServiceApp", [
+﻿var app = angular.module("ServiceApp", [
     "ngRoute", "jsonFormatter"
 ]);
 
@@ -13,13 +13,13 @@ app.config([
         //    .otherwise("/404", { templateUrl: "partials/404.html", controller: "PageCtrl" });
     }
 ]);
-angular.module("InventoryServiceApp").factory("endpoints", function () {
+angular.module("ServiceApp").factory("endpoints", function () {
     return {
         hub: "/signalr",
         webApi: "/api/values/ActorSystemStates"
     };
 });
-angular.module("InventoryServiceApp").service("service", function ($q, $http, $rootScope) {
+angular.module("ServiceApp").service("service", function ($q, $http, $rootScope) {
     this.POST = function (url, item) {
         var deferred = $q.defer();
         var load = JSON.stringify(item);
@@ -45,9 +45,9 @@ angular.module("InventoryServiceApp").service("service", function ($q, $http, $r
         return deferred.promise;
     };
 });
-angular.module("InventoryServiceApp").factory("hub", function (endpoints, $timeout) {
+angular.module("ServiceApp").factory("hub", function (endpoints, $timeout) {
     $.connection.hub.url = endpoints.hub;
-    var chat = $.connection.inventoryServiceHub;
+    var chat = $.connection.ServiceHub;
     return {
         ready: function (f) {
             $.connection.hub.start().done(function () {
@@ -70,7 +70,7 @@ angular.module("InventoryServiceApp").factory("hub", function (endpoints, $timeo
     };
 });
 
-angular.module("InventoryServiceApp").controller("ActorsCtrl", function ($scope, $rootScope, $http, $q, $timeout, hub) {
+angular.module("ServiceApp").controller("ActorsCtrl", function ($scope, $rootScope, $http, $q, $timeout, hub) {
     var lastResponse = {};
     var lastResponseDict = {};
     $scope. updateGrid = function () {
@@ -95,19 +95,19 @@ angular.module("InventoryServiceApp").controller("ActorsCtrl", function ($scope,
             });
     }
     $scope.newUpdateAvailable = 0;
-    hub.client("inventoryData", function (response) {
+    hub.client("Data", function (response) {
         for (var i = 0; i < response.RealTimeInventories.length; i++) {
-            var newInventory = response.RealTimeInventories[i];
-            var productId = newInventory.ProductId;
+            var newData = response.RealTimeInventories[i];
+            var productId = newData.ProductId;
             var cachedInv = lastResponseDict[productId];
             if (cachedInv) {
-                if ((cachedInv.Quantity !== newInventory.Quantity) || (cachedInv.Reserved !== newInventory.Reserved) || (cachedInv.Holds !== newInventory.Holds)) {
+                if ((cachedInv.Quantity !== newData.Quantity) || (cachedInv.Reserved !== newData.Reserved) || (cachedInv.Holds !== newData.Holds)) {
                     $scope.newUpdateAvailable++;
                 }
             } else {
                 $scope.newUpdateAvailable++;
             }
-            lastResponseDict[productId] = newInventory;
+            lastResponseDict[productId] = newData;
         }
         lastResponse = response;
     });

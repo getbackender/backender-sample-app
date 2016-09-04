@@ -1,51 +1,29 @@
 {
   "testdir" : "app/tests",
-	"useheadless" : false,
+  "useheadless" : false,
   "path": "/app",
   "config": [
     {
       "apiverbose": true,
       "localport": 8890,
       "apiport": 8891,
-      "datasourcepath": "/app",
       "datasource": [
-        "db.json",
-        "db.js",
-        {
-          "products3": [
-            {
-              "hey": "whatpp"
-            }
-          ]
-        }
+        "mock-server.js",
+		"mock-server.json"
       ],
       "routes": [
         {
-          "route": "/api/all/GetProducts1",
-          "data": "products1"
-        },
-        {
-          "route": "/api/GetProducts2",
-          "data": "products2"
-        },
-        {
-          "route": "/api/GetProducts3",
-          "data": "products3"
-        },
-        {
-          "route": "/bootstrap",
-          "endpoint": "http://getbootstrap.com/"
+          "route": "/signalr/negotiate",
+          "data": "negotiate"
+        },{
+          "route": "/signalr/connect",
+          "data": "connect"
         },
         {
           "route": "/",
-          "path": "app/web"
-        },
-        {
-          "route": "/my/pb",
-          "data": "pb"
+          "path": "app"
         }
       ]
-    },
-    "config.json"
+    }
   ]
 }
